@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Successfully retrieve the product list</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff"><link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css"><!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.11.3/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.11.3/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.11.3/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- JQuery-UI -->
+<link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
+<script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.11.3/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.11.3/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.11.3/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<!-- ImgPreview -->
+<script src="scripts/imgpreview.full.jquery.js" type="text/javascript"></script>
+</head>
+
+<body class="results-page">
+
+
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle">Serenity BDD Report</span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+        <span class="breadcrumbs">
+            <a href="index.html" class="breadcrumbs">Home</a>
+
+ <!-- inflection.of(breadcrumb.displayName).asATitle()-->
+            > <a href="bf690c59c54d2b63871e9859b3bda30741b1472b17ca71a38b372897b5dd37e2.html">Validate GET request for product list</a>
+        > Successfully retrieve the product list
+        </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 11-02-2025 23:10</span>
+    <br style="clear:left"/>
+</div>
+    <div class="clr"></div>
+
+
+    <div id="contentbody">
+        <div class="titlebar">
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td>
+                                <div>
+                                    <h3 class="discreet-story-header">
+                                        <i class="fs-2 bi bi-chat-left-quote title-icon"></i>
+                                        <span class="story-header-title">Validate GET Request For Product List </span>
+                                    </h3>
+
+                                </div>
+
+                        </td>
+                        <td valign="top">
+                            <p class="tag">
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;"
+                                                                      href="3d74b427273235d0b6d93204f450caa4dbd7f63cf550df8ec55ed8d6a767485c.html">Successful
+                                    (tag)</a>
+                                </span>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td colspan="2" class="test-title-bar">
+                            <span class="outcome-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="test-case-title">
+                                <span class="success-color">
+                                    Successfully retrieve the product list
+                                        <span class="related-issue-title"></span>
+                                </span>
+                            </span>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <!-- CAST MEMBERS -->
+            <div>&nbsp;</div>
+            <div>
+                <h3 class="discreet-story-header">
+                    <i class="fs-2 bi bi-people large-icon"></i>
+                    <span class="story-header-title">
+                        <a class="btn btn-primary" data-toggle="collapse" href="#castDetails"
+                           role="button" aria-expanded="true" aria-controls="castDetails">Cast</a>
+                    </span>
+                </h3>
+            </div>
+            <div class="collapse multi-collapse" id="castDetails">
+                <table class="cast">
+                    <tr>
+                            <td width="100%">
+                                <h4>
+                                    <i class="fs-2 bi bi-person"></i>&nbsp;
+                                    <span>
+                                        <a data-toggle="collapse" href="#abilities-Jhoana" aria-expanded="false" aria-controls="abilities">Jhoana</a>
+                                        
+                                    </span>
+                                </h4>
+                                <div class="collapse multi-collapse" id="abilities-Jhoana">
+                                    <div>
+                                        <span class="cast-description">Jhoana can:</span>
+                                        <ul>
+                                                <li>call an API at https://automationexercise.com/api</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        </td>
+        </tr>
+        </table>
+    </div>
+    <!-- END CAST MEMBERS -->
+
+
+</div>
+</div>
+
+<div class="clr"></div>
+
+    <div class="story-title">
+        <h3 class="story-header">Scenario Outline</h3>
+
+        <div class="scenario">Given the user has access to the product API<br>When they send a GET request with the resource "&lt;resource&gt;"<br>Then the response message should be the product list</div>
+
+    </div>
+
+<div id="beforetable"></div>
+
+
+        <h3 class="story-header">Examples:&nbsp;</h3>
+            <div class="requirementNarrative"></div>
+
+
+            <p class="example-tag">
+            </p>
+
+        <div class="example-table test-report">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                        <th>Resource</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="test-SUCCESS"><a href="#0">1</a></td>
+                            <td class="test-SUCCESS"><a
+                                        href="#0">/productsList</a>
+                            </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+<div id="tablecontents">
+    <div>
+        <table class="step-table">
+            <tr class="step-titles">
+                <th width="65">
+                </th>
+                <th class="step-description-column greentext">
+                    Steps
+                </th>
+
+                <th width="130" class="greentext">Outcome</th>
+                <th width="100" class="greentext"><i title="Duration" class="bi bi-stopwatch"></i></th>
+            </tr>
+            <tr class="step-table-separator">
+                <td colspan="5"></td>
+            </tr>
+
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
+                               style="display:block">
+                                <i class="bi bi-plus-square imgstepSection0 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                1: Successfully retrieve the product list ({resource=/productsList})
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">7s 552ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-0"></a>
+                            <span style="margin-left: 40px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Given the user has access to the product API
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">129ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-1"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-1')"
+                               style="display:block">
+                                <i class="bi bi-plus-square imgstepSection0-1 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-1')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                When they send a GET request with the resource "/productsList"
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">7s 067ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0-1" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="0-1-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-1-0')"
+                               style="display:block">
+                                <i class="bi bi-plus-square imgstepSection0-1-0 success-icon"
+                                   style="margin-left: 60px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-1-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Jhoana consume services get
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">6s 645ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0-1-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="110" class="step-icon">
+                        <a name="0-1-0-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-1-0-0')"
+                               style="display:block">
+                                <i class="bi bi-plus-square imgstepSection0-1-0-0 success-icon"
+                                   style="margin-left: 80px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-1-0-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Jhoana get petition
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">6s 507ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0-1-0-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="130" class="step-icon">
+                        <a name="0-1-0-0-0"></a>
+                            <span style="margin-left: 100px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                GET https://automationexercise.com/api/productsList
+                                        </span>
+                            <span class="evidence">
+                                        <span class="piece-of-evidence">
+                <span>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="collapse"
+                                data-target="#restModal-REST-6">
+                            REST Query
+                        </button>
+                    </span>
+                <!-- Modal -->
+                <div class="rest-query-details">
+                    <div class="collapse multi-collapse" id="restModal-REST-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Response</h4>
+                                    <p>URL: https://automationexercise.com/api/productsList</p>
+                                    <p>Status code: 200</p>
+                                    <p>Content Type: application/json</p>
+                                    <h4>Request Headers</h4>
+                                    <pre>Accept=*/*<br>Content-Type=application/json</pre>
+                                    <h4>Response Headers</h4>
+                                    <pre>Date: Wed, 12 Feb 2025 04:10:14 GMT<br>Content-Type: text/html; charset=utf-8<br>Transfer-Encoding: chunked<br>Connection: keep-alive<br>vary: Accept,Cookie,Accept-Encoding<br>referrer-policy: same-origin<br>x-frame-options: DENY<br>x-content-type-options: nosniff<br>allow: PUT, GET, DELETE, OPTIONS, POST<br>x-powered-by: Phusion Passenger(R) 6.0.23<br>status: 200 OK<br>cf-cache-status: DYNAMIC<br>Report-To: {&quot;endpoints&quot;:[{&quot;url&quot;:&quot;https:\/\/a.nel.cloudflare.com\/report\/v4?s=IiCuxjPnqeC87niVHgb3%2BkXHBURP8G0t1CICzG8I79Q1RLEITDHogEz2Ql9R0bsharruMwHHiAN3mQtAzw4iut3JbLTvX8CjqF%2BtP%2Fb1%2FnGotz6nejwl4ywlL5%2FqLqvp8qIsk1dC3UtB&quot;}],&quot;group&quot;:&quot;cf-nel&quot;,&quot;max_age&quot;:604800}<br>NEL: {&quot;success_fraction&quot;:0,&quot;report_to&quot;:&quot;cf-nel&quot;,&quot;max_age&quot;:604800}<br>Server: cloudflare<br>CF-RAY: 9109ba4bdb1295d1-UIO<br>Content-Encoding: gzip<br>alt-svc: h3=&quot;:443&quot;; ma=86400<br>server-timing: cfL4;desc=&quot;?proto=TCP&amp;rtt=14292&amp;min_rtt=8036&amp;rtt_var=11629&amp;sent=7&amp;recv=7&amp;lost=0&amp;retrans=0&amp;sent_bytes=3147&amp;recv_bytes=829&amp;delivery_rate=351418&amp;cwnd=252&amp;unsent_bytes=0&amp;cid=470e89050d22a5ac&amp;ts=808&amp;x=0&quot;</pre>
+                                <h4>Response Body</h4>
+                                    <pre>&lt;html&gt;<br>  &lt;body&gt;{&quot;responseCode&quot;: 200, &quot;products&quot;: [{&quot;id&quot;: 1, &quot;name&quot;: &quot;Blue Top&quot;, &quot;price&quot;: &quot;Rs. 500&quot;, &quot;brand&quot;: &quot;Polo&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Women&quot;}, &quot;category&quot;: &quot;Tops&quot;}}, {&quot;id&quot;: 2, &quot;name&quot;: &quot;Men Tshirt&quot;, &quot;price&quot;: &quot;Rs. 400&quot;, &quot;brand&quot;: &quot;H&amp;amp;M&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Men&quot;}, &quot;category&quot;: &quot;Tshirts&quot;}}, {&quot;id&quot;: 3, &quot;name&quot;: &quot;Sleeveless Dress&quot;, &quot;price&quot;: &quot;Rs. 1000&quot;, &quot;brand&quot;: &quot;Madame&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Women&quot;}, &quot;category&quot;: &quot;Dress&quot;}}, {&quot;id&quot;: 4, &quot;name&quot;: &quot;Stylish Dress&quot;, &quot;price&quot;: &quot;Rs. 1500&quot;, &quot;brand&quot;: &quot;Madame&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Women&quot;}, &quot;category&quot;: &quot;Dress&quot;}}, {&quot;id&quot;: 5, &quot;name&quot;: &quot;Winter Top&quot;, &quot;price&quot;: &quot;Rs. 600&quot;, &quot;brand&quot;: &quot;Mast &amp;amp; Harbour&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Women&quot;}, &quot;category&quot;: &quot;Tops&quot;}}, {&quot;id&quot;: 6, &quot;name&quot;: &quot;Summer White Top&quot;, &quot;price&quot;: &quot;Rs. 400&quot;, &quot;brand&quot;: &quot;H&amp;amp;M&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Women&quot;}, &quot;category&quot;: &quot;Tops&quot;}}, {&quot;id&quot;: 7, &quot;name&quot;: &quot;Madame Top For Women&quot;, &quot;price&quot;: &quot;Rs. 1000&quot;, &quot;brand&quot;: &quot;Madame&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Women&quot;}, &quot;category&quot;: &quot;Tops&quot;}}, {&quot;id&quot;: 8, &quot;name&quot;: &quot;Fancy Green Top&quot;, &quot;price&quot;: &quot;Rs. 700&quot;, &quot;brand&quot;: &quot;Polo&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Women&quot;}, &quot;category&quot;: &quot;Tops&quot;}}, {&quot;id&quot;: 11, &quot;name&quot;: &quot;Sleeves Printed Top - White&quot;, &quot;price&quot;: &quot;Rs. 499&quot;, &quot;brand&quot;: &quot;Babyhug&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Kids&quot;}, &quot;category&quot;: &quot;Tops &amp;amp; Shirts&quot;}}, {&quot;id&quot;: 12, &quot;name&quot;: &quot;Half Sleeves Top Schiffli Detailing - Pink&quot;, &quot;price&quot;: &quot;Rs. 359&quot;, &quot;brand&quot;: &quot;Babyhug&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Kids&quot;}, &quot;category&quot;: &quot;Tops &amp;amp; Shirts&quot;}}, {&quot;id&quot;: 13, &quot;name&quot;: &quot;Frozen Tops For Kids&quot;, &quot;price&quot;: &quot;Rs. 278&quot;, &quot;brand&quot;: &quot;Allen Solly Junior&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Kids&quot;}, &quot;category&quot;: &quot;Tops &amp;amp; Shirts&quot;}}, {&quot;id&quot;: 14, &quot;name&quot;: &quot;Full Sleeves Top Cherry - Pink&quot;, &quot;price&quot;: &quot;Rs. 679&quot;, &quot;brand&quot;: &quot;Kookie Kids&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Kids&quot;}, &quot;category&quot;: &quot;Tops &amp;amp; Shirts&quot;}}, {&quot;id&quot;: 15, &quot;name&quot;: &quot;Printed Off Shoulder Top - White&quot;, &quot;price&quot;: &quot;Rs. 315&quot;, &quot;brand&quot;: &quot;Babyhug&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Kids&quot;}, &quot;category&quot;: &quot;Tops &amp;amp; Shirts&quot;}}, {&quot;id&quot;: 16, &quot;name&quot;: &quot;Sleeves Top and Short - Blue &amp;amp; Pink&quot;, &quot;price&quot;: &quot;Rs. 478&quot;, &quot;brand&quot;: &quot;Babyhug&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Kids&quot;}, &quot;category&quot;: &quot;Dress&quot;}}, {&quot;id&quot;: 18, &quot;name&quot;: &quot;Little Girls Mr. Panda Shirt&quot;, &quot;price&quot;: &quot;Rs. 1200&quot;, &quot;brand&quot;: &quot;Kookie Kids&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Kids&quot;}, &quot;category&quot;: &quot;Tops &amp;amp; Shirts&quot;}}, {&quot;id&quot;: 19, &quot;name&quot;: &quot;Sleeveless Unicorn Patch Gown - Pink&quot;, &quot;price&quot;: &quot;Rs. 1050&quot;, &quot;brand&quot;: &quot;Allen Solly Junior&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Kids&quot;}, &quot;category&quot;: &quot;Dress&quot;}}, {&quot;id&quot;: 20, &quot;name&quot;: &quot;Cotton Mull Embroidered Dress&quot;, &quot;price&quot;: &quot;Rs. 1190&quot;, &quot;brand&quot;: &quot;Kookie Kids&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Kids&quot;}, &quot;category&quot;: &quot;Dress&quot;}}, {&quot;id&quot;: 21, &quot;name&quot;: &quot;Blue Cotton Indie Mickey Dress&quot;, &quot;price&quot;: &quot;Rs. 1530&quot;, &quot;brand&quot;: &quot;Biba&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Kids&quot;}, &quot;category&quot;: &quot;Dress&quot;}}, {&quot;id&quot;: 22, &quot;name&quot;: &quot;Long Maxi Tulle Fancy Dress Up Outfits -Pink&quot;, &quot;price&quot;: &quot;Rs. 1600&quot;, &quot;brand&quot;: &quot;Biba&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Kids&quot;}, &quot;category&quot;: &quot;Dress&quot;}}, {&quot;id&quot;: 23, &quot;name&quot;: &quot;Sleeveless Unicorn Print Fit &amp;amp; Flare Net Dress - Multi&quot;, &quot;price&quot;: &quot;Rs. 1100&quot;, &quot;brand&quot;: &quot;Biba&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Kids&quot;}, &quot;category&quot;: &quot;Dress&quot;}}, {&quot;id&quot;: 24, &quot;name&quot;: &quot;Colour Blocked Shirt &#92;2013 Sky Blue&quot;, &quot;price&quot;: &quot;Rs. 849&quot;, &quot;brand&quot;: &quot;Allen Solly Junior&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Kids&quot;}, &quot;category&quot;: &quot;Tops &amp;amp; Shirts&quot;}}, {&quot;id&quot;: 28, &quot;name&quot;: &quot;Pure Cotton V-Neck T-Shirt&quot;, &quot;price&quot;: &quot;Rs. 1299&quot;, &quot;brand&quot;: &quot;H&amp;amp;M&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Men&quot;}, &quot;category&quot;: &quot;Tshirts&quot;}}, {&quot;id&quot;: 29, &quot;name&quot;: &quot;Green Side Placket Detail T-Shirt&quot;, &quot;price&quot;: &quot;Rs. 1000&quot;, &quot;brand&quot;: &quot;Polo&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Men&quot;}, &quot;category&quot;: &quot;Tshirts&quot;}}, {&quot;id&quot;: 30, &quot;name&quot;: &quot;Premium Polo T-Shirts&quot;, &quot;price&quot;: &quot;Rs. 1500&quot;, &quot;brand&quot;: &quot;Polo&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Men&quot;}, &quot;category&quot;: &quot;Tshirts&quot;}}, {&quot;id&quot;: 31, &quot;name&quot;: &quot;Pure Cotton Neon Green Tshirt&quot;, &quot;price&quot;: &quot;Rs. 850&quot;, &quot;brand&quot;: &quot;H&amp;amp;M&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Men&quot;}, &quot;category&quot;: &quot;Tshirts&quot;}}, {&quot;id&quot;: 33, &quot;name&quot;: &quot;Soft Stretch Jeans&quot;, &quot;price&quot;: &quot;Rs. 799&quot;, &quot;brand&quot;: &quot;Polo&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Men&quot;}, &quot;category&quot;: &quot;Jeans&quot;}}, {&quot;id&quot;: 35, &quot;name&quot;: &quot;Regular Fit Straight Jeans&quot;, &quot;price&quot;: &quot;Rs. 1200&quot;, &quot;brand&quot;: &quot;H&amp;amp;M&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Men&quot;}, &quot;category&quot;: &quot;Jeans&quot;}}, {&quot;id&quot;: 37, &quot;name&quot;: &quot;Grunt Blue Slim Fit Jeans&quot;, &quot;price&quot;: &quot;Rs. 1400&quot;, &quot;brand&quot;: &quot;Polo&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Men&quot;}, &quot;category&quot;: &quot;Jeans&quot;}}, {&quot;id&quot;: 38, &quot;name&quot;: &quot;Rose Pink Embroidered Maxi Dress&quot;, &quot;price&quot;: &quot;Rs. 2300&quot;, &quot;brand&quot;: &quot;Madame&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Women&quot;}, &quot;category&quot;: &quot;Dress&quot;}}, {&quot;id&quot;: 39, &quot;name&quot;: &quot;Cotton Silk Hand Block Print Saree&quot;, &quot;price&quot;: &quot;Rs. 3000&quot;, &quot;brand&quot;: &quot;Biba&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Women&quot;}, &quot;category&quot;: &quot;Saree&quot;}}, {&quot;id&quot;: 40, &quot;name&quot;: &quot;Rust Red Linen Saree&quot;, &quot;price&quot;: &quot;Rs. 3500&quot;, &quot;brand&quot;: &quot;Biba&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Women&quot;}, &quot;category&quot;: &quot;Saree&quot;}}, {&quot;id&quot;: 41, &quot;name&quot;: &quot;Beautiful Peacock Blue Cotton Linen Saree&quot;, &quot;price&quot;: &quot;Rs. 5000&quot;, &quot;brand&quot;: &quot;Madame&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Women&quot;}, &quot;category&quot;: &quot;Saree&quot;}}, {&quot;id&quot;: 42, &quot;name&quot;: &quot;Lace Top For Women&quot;, &quot;price&quot;: &quot;Rs. 1400&quot;, &quot;brand&quot;: &quot;Mast &amp;amp; Harbour&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Women&quot;}, &quot;category&quot;: &quot;Tops&quot;}}, {&quot;id&quot;: 43, &quot;name&quot;: &quot;GRAPHIC DESIGN MEN T SHIRT - BLUE&quot;, &quot;price&quot;: &quot;Rs. 1389&quot;, &quot;brand&quot;: &quot;Mast &amp;amp; Harbour&quot;, &quot;category&quot;: {&quot;usertype&quot;: {&quot;usertype&quot;: &quot;Men&quot;}, &quot;category&quot;: &quot;Tshirts&quot;}}]}&lt;/body&gt;<br>&lt;/html&gt;</pre>
+                                    <h4>Response Cookies</h4>
+                                    <pre></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        </span>
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-2"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-2')"
+                               style="display:block">
+                                <i class="bi bi-plus-square imgstepSection0-2 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-2')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Then the response message should be the product list
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">163ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0-2" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="0-2-0"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                Then code result:  should be (200)
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step">016ms</span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+            <tr class="test-SUCCESS">
+                    <td colspan="2"></td>
+                <td width="130"><span class="top-level-step"><em>SUCCESS</em></span></td>
+                <td width="100"><span class="top-level-step"><em>7.85s</em></span></td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<div id="beforefooter"></div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <span class="version">Serenity BDD version 3.3.4</span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function toggleDiv(divId) {
+        $("#" + divId).toggle();
+        var imgsrc = $(".img" + divId).attr('src');
+        if (imgsrc == 'images/plus.png') {
+            $(".img" + divId).attr("src", function () {
+                return "images/minus.png";
+            });
+
+        } else {
+            $(".img" + divId).attr("src", function () {
+                return "images/plus.png";
+            });
+        }
+    }
+</script>
+
+
+<script type="text/javascript">
+    //<![CDATA[
+
+    $(document).ready(function () {
+        $('img.screenshot').imgPreview({
+            imgCSS: {
+                width: '500px'
+            },
+            distanceFromCursor: {top: 10, left: -200}
+        });
+    });
+
+    //]]>
+</script>
+<div id="imgPreviewContainer" style="position: absolute; top: 612px; left: 355px; display: none; " class=""><img
+            src="" style="display: none; "></div>
+<div id="imgPreviewContainer2" style="position: absolute; top: 925px; left: 320px; display: none; " class="">
+    <img style="width: 200px; display: none; " src=""></div>
+<div id="imgPreviewWithStyles" style="position: absolute; top: 1272px; left: 321px; display: none; " class="">
+    <img style="height: 200px; opacity: 1; display: none; " src=""></div>
+<div id="imgPreviewWithStyles2" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+<div id="imgPreviewWithStyles3" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+
+</div>
+</body>
+</html>

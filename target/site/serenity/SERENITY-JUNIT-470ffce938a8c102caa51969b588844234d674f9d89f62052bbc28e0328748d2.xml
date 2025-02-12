@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Validate GET request for product list" skipped="0" tests="1" time="7.85" timestamp="2025-02-11 11:10:06"><testcase name="Successfully retrieve the product list"/></testsuite>
