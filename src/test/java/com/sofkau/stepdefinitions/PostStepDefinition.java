@@ -1,4 +1,4 @@
-package stepdefinitions;
+package com.sofkau.stepdefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -6,15 +6,15 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
-import questions.CodePostResult;
+import com.sofkau.questions.CodePostResult;
 
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.apache.http.HttpStatus.SC_METHOD_NOT_ALLOWED;
 import static org.hamcrest.Matchers.equalTo;
-import  questions.MessagePostResult;
-import static tasks.ConsumeServicesPost.makeConsumePost;
-import static utils.Constants.BASE_URL;
+import com.sofkau.questions.MessagePostResult;
+import static com.sofkau.tasks.ConsumeServicesPost.makeConsumePost;
+import static com.sofkau.utils.Constants.BASE_URL;
 
 public class PostStepDefinition extends SetUpServicesStepDefinition {
     @Given("the user has access to the products API")
@@ -31,7 +31,7 @@ public class PostStepDefinition extends SetUpServicesStepDefinition {
     }
 
     @Then("the response status code should be {int}")
-    public void theResponseStatusCodeShouldBe() {
+    public void theResponseStatusCodeShouldBe(int statusCode) {
         actor.should(
                 seeThat("code result: ",
                         CodePostResult.postResult(), equalTo(SC_METHOD_NOT_ALLOWED))

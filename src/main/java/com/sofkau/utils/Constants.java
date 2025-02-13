@@ -1,4 +1,4 @@
-package utils;
+package com.sofkau.utils;
 
 public class Constants {
     public static final String ACTOR = "Jhoana";

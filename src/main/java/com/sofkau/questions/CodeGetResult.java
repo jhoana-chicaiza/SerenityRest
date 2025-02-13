@@ -1,4 +1,4 @@
-package questions;
+package com.sofkau.questions;
 
 import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.Actor;

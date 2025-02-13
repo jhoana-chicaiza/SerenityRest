@@ -1,6 +1,6 @@
-package tasks;
+package com.sofkau.tasks;
 
-import interactions.GetPetition;
+import com.sofkau.interactions.GetPetition;
 import io.restassured.http.ContentType;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;

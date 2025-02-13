@@ -1,4 +1,4 @@
-package stepdefinitions;
+package com.sofkau.stepdefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -6,14 +6,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
-import questions.CodePutResult;
-import questions.MessagePutResult;
+import com.sofkau.questions.CodePutResult;
+import com.sofkau.questions.MessagePutResult;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.apache.http.HttpStatus.SC_METHOD_NOT_ALLOWED;
 import static org.hamcrest.Matchers.equalTo;
-import static tasks.ConsumeServicesPut.makeConsumePut;
-import static utils.Constants.BASE_URL;
+import static com.sofkau.tasks.ConsumeServicesPut.makeConsumePut;
+import static com.sofkau.utils.Constants.BASE_URL;
 
 public class PutStepDefinition extends SetUpServicesStepDefinition {
     @Given("the user has access to the brands API")
@@ -30,7 +30,7 @@ public class PutStepDefinition extends SetUpServicesStepDefinition {
     }
 
     @Then("the response status code should {int}")
-    public void theResponseStatusCodeShould() {
+    public void theResponseStatusCodeShould(int statusCode) {
         actor.should(
                 seeThat("code result: ",
                         CodePutResult.putResult(), equalTo(SC_METHOD_NOT_ALLOWED))

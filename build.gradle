@@ -37,7 +37,7 @@ ext {
     serenityCucumberVersion = '3.3.4'
     junitVersion = '5.8.2'
     assertJVersion = '3.22.0'
-    logbackVersion = '1.2.10'
+    logbackVersion = '1.4.12'
     lombokVersion = '1.18.22'
     log4jVersion = '2.17.1'
 }
@@ -56,7 +56,7 @@ dependencies {
     implementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     implementation "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
     implementation "org.assertj:assertj-core:${assertJVersion}"
-    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+    implementation "ch.qos.logback:logback-classic:1.4.12"
 
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"

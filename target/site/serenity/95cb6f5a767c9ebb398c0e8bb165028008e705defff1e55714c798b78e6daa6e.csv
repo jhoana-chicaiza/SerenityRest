@@ -1,2 +1,2 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Validate unsupported request method for products API","Sending a POST request to the products list","FAILURE","2025-02-13T07:29:23.2647977-05:00[America/Guayaquil]","0.0","3.32"
+"Verify Login API with unsupported request method","User sends a DELETE request to the login verification API","ERROR","2025-02-13T09:06:18.1894554-05:00[America/Guayaquil]","0.0","0.52"

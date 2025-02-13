@@ -1,4 +1,4 @@
-package questions;
+package com.sofkau.questions;
 
 import io.restassured.path.json.JsonPath;
 import net.serenitybdd.rest.SerenityRest;
