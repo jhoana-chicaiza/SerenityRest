@@ -1,0 +1,2 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Validate unsupported request method for brands API","Sending a PUT request to the brands list","SUCCESS","2025-02-13T09:42:41.9596903-05:00[America/Guayaquil]","0.0","4.0"

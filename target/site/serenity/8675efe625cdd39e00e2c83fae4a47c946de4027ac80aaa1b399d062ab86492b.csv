@@ -1,0 +1,2 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Validate unsupported request method for products API","Sending a POST request to the products list","FAILURE","2025-02-13T07:32:25.4608813-05:00[America/Guayaquil]","0.0","3.53"

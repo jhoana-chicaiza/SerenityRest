@@ -1,2 +1,4 @@
 "Story","Title","Result","Date","Stability","Duration (s)"
-"Validate GET request for product list","Successfully retrieve the product list","SUCCESS","2025-02-11T23:10:06.5359588-05:00[America/Guayaquil]","0.0","7.85"
+"Validate GET request for product list","Successfully retrieve the product list","SUCCESS","2025-02-13T09:17:51.2614597-05:00[America/Guayaquil]","0.0","3.19"
+"Validate unsupported request method for products API","Sending a POST request to the products list","SUCCESS","2025-02-13T08:33:27.5813587-05:00[America/Guayaquil]","0.0","3.68"
+"Validate unsupported request method for brands API","Sending a PUT request to the brands list","SUCCESS","2025-02-13T09:42:41.9596903-05:00[America/Guayaquil]","0.0","4.0"

@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features/put.feature",
         glue = "stepdefinitions",
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        tags = "@Success"
+        tags = "@Successful"
 )
 public class PutRunner {
 

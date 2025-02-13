@@ -1,0 +1,2 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Verify Login API with unsupported request method","User sends a DELETE request to the login verification API","FAILURE","2025-02-12T23:39:49.0416804-05:00[America/Guayaquil]","0.0","3.41"

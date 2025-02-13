@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Validate unsupported request method for brands API" skipped="0" tests="1" time="4.0" timestamp="2025-02-13 09:42:41"><testcase name="Sending a PUT request to the brands list"/></testsuite>
